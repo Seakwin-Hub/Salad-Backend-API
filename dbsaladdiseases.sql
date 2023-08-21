@@ -51,3 +51,12 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2023-05-29 22:35:37
+
+
+-- == GIT Initial ==
+
+-- git init // create new repo
+-- git status // check it under modify  or add already
+-- git add . // add all file to git but not completed because not yet save 
+-- git commit -m "comment" // git commit use to save to git repo and '-m' "comment" use to add comment 
+-- or git commit -am "comment" // a = add m = comment
