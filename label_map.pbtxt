@@ -1,0 +1,28 @@
+item {
+    id: 1
+    name: 'Bacterial Disease'
+}
+item {
+    id: 2
+    name: 'Downy mildew'
+}
+item {
+    id: 3
+    name: 'powdery mildew'
+}
+item {
+    id: 4
+    name: 'Septoria Blight'
+}
+item {
+    id: 5
+    name: 'Wilt and leaf blight'
+}
+item {
+    id: 6
+    name: 'Heathy'
+}
+item {
+    id: 7
+    name: 'Viral Disease'
+}

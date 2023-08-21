@@ -1,0 +1,30 @@
+def updateDict(listOfBaterial, diseaseimg):
+    ENCODING = 'utf-8'
+    for eachDisease in listOfBaterial['images'] :
+        with open(eachDisease, 'rb') as open_file:
+            byte_content = open_file.read()
+
+        base64_bytes = b64encode(byte_content)
+
+        base64_string = base64_bytes.decode(ENCODING)
+        diseaseimg.append(base64_string)
+    return diseaseimg
+
+class DiseaseImg(Resource):
+    @classmethod
+    def get(cls):
+        try:
+            listOfDisease = [listOfBaterial, fungalDowny, fungalPowdery, fungalSeptoria, fungalWilt, listOfViral]
+            diseaseimg = []
+            for eachDisease in listOfDisease:
+                updateDict(eachDisease, diseaseimg)
+                eachDisease['images'] = diseaseimg
+                diseaseimg = []
+
+
+            # raw_data = {'image': base64_string}
+            # json_data = dumps(raw_data, indent=2)
+
+            return{"diseaseimg" : listOfDisease}
+        except Exception as err:
+            return {"msg": err}
