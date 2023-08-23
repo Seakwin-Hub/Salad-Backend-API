@@ -1,4 +1,5 @@
 from dbinfo import app, api, db, render_template
+
 import os
 
 from controls.salad import *
@@ -6,6 +7,8 @@ from controls.salad import *
 @app.errorhandler(404)
 def page_not_found(err):
     return {"msg": "page not found"}
+
+
 
 
 api.add_resource(HomePage, "/")
@@ -19,4 +22,5 @@ api.add_resource(DiseaseKindImg, "/imagedata/disease/<typeimg>")
 
 if __name__ == "__main__":
     db.init_app(app)
-    app.run(host='0.0.0.0', port=4000, debug=False)
+    
+    app.run(host='0.0.0.0', port=5000, debug=False)
