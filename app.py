@@ -19,6 +19,7 @@ api.add_resource(SaladList, "/saladlist")
 api.add_resource(DiseaseImg, "/imagedata/<typeimg>")
 api.add_resource(SaladKindImg, "/imagedata/salad/<typeimg>")
 api.add_resource(DiseaseKindImg, "/imagedata/disease/<typeimg>")
+api.add_resource(ImageUpload,"/imageupload" )
 
 if __name__ == "__main__":
     db.init_app(app)

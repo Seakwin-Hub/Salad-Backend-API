@@ -95,12 +95,13 @@ def tflite_detect_images(modelpath, imgpath, lblpath, min_conf=0.5, num_test_ima
                 cv2.putText(image, label, (xmin, label_ymin-7), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 0), 2) # Draw label text
 
                 detections.append([object_name, scores[i], xmin, ymin, xmax, ymax])
+                print(detections)
                 
     return detections
 	
 
 # Set up variables for running user's model
-PATH_TO_IMAGES= 'images/Disease/88.jpeg'   #'workspace\images\test'   # Path to test images folder
+PATH_TO_IMAGES= '/Volumes/Seakwin-Drive/Flask+SQL/saladapi/images/Disease/fungal/DownyMildew/01.jpg'   #'workspace\images\test'   # Path to test images folder
 PATH_TO_MODEL='model.tflite'   # Path to .tflite model file
 PATH_TO_LABELS='label_map.pbtxt' # Path to labelmap.txt file
 min_conf_threshold=0.5   # Confidence threshold (try changing this to 0.01 if you don't see any detection results)
@@ -109,5 +110,26 @@ txt_only = False
 
 # Run inferencing function!
 detections = tflite_detect_images(PATH_TO_MODEL, PATH_TO_IMAGES, PATH_TO_LABELS, min_conf_threshold, images_to_test,txt_only)
-print(detections[0])
+# print(detections[0])
 
+
+
+# Load the original image
+image = cv2.imread(PATH_TO_IMAGES)
+
+
+for detection in detections:
+    class_info, confidence, xmin, ymin, xmax, ymax = detection[0], detection[1], detection[2], detection[3], detection[4], detection[5]
+    
+    # Draw bounding box
+    cv2.rectangle(image, (xmin, ymin), (xmax, ymax), (10, 255, 0), 2)
+    
+    # Draw label
+    label = f"{class_info['name']} {int(confidence * 100)}%"
+    cv2.putText(image, label, (xmin, ymin - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+
+# Save the annotated image to a directory
+annotated_image_filename = "annotated_image.jpg"  # Adjust the filename and extension as needed
+path_to_save = "./uploadimage/" + annotated_image_filename
+
+cv2.imwrite(path_to_save, image)
