@@ -8,9 +8,6 @@ from controls.salad import *
 def page_not_found(err):
     return {"msg": "page not found"}
 
-
-
-
 api.add_resource(HomePage, "/")
 api.add_resource(Disease, "/disease/<did>")
 api.add_resource(DiseaseList, "/diseaselist")

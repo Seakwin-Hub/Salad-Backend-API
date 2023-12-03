@@ -133,6 +133,7 @@ class ImageUpload(Resource):
                 image = Image.open(BytesIO(image_bytes))
 
                 image_filename = os.path.join("/Volumes/Seakwin-Drive/Flask+SQL/saladapi/uploadimage/", 'uploaded_image.jpg')
+                image = image.convert('RGB')
                 image.save(image_filename)
                 image = cv2.imread(image_filename)
                 print(image_filename)
